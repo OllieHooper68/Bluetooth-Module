@@ -1,0 +1,17 @@
+ #include <SoftwareSerial.h>
+ SoftwareSerial ble(9, 10); // RX, TX
+ void setup() {
+   // Open serial port
+   Serial.begin(9600);
+   // begin bluetooth serial port communication
+   ble.begin(9600);
+   ble.println("Connect");
+ }
+void loop() {
+   if(ble.available()){
+     Serial.write(ble.read());
+}
+   if(Serial.available()){
+     ble.write(Serial.read());
+} 
+}
